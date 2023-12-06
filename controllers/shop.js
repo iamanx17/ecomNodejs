@@ -146,16 +146,13 @@ exports.editGetProduct = async (req, res, next) => {
 
 exports.editPostProduct = async (req, res, next) => {
   const prodId = req.params.productId;
-  await productModel.findByIdAndUpdate(
-    { _id: prodId },
-    {
-      url: req.body.product_url,
-      title: req.body.title,
-      description: req.body.description,
-      price: req.body.price,
-      product_url: req.body.product_url,
-    }
-  );
+  const updatedProduct = {
+    title: req.body.title,
+    description: req.body.description,
+    imageUrl: req.body.product_url,
+    price: req.body.price,
+  };
+  await productModel.findByIdAndUpdate(prodId, updatedProduct);
   return res.redirect(`/products/${prodId}`);
 };
 
