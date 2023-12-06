@@ -1,0 +1,43 @@
+{% extends "base.njk" %}
+{% block title %} Welcome to cart {% endblock %}
+{% block content %}
+
+  <div class="container my-5">
+    <ol class="list-group list-group-numbered">
+      {% for item in products %}
+        <li
+      class="list-group-item d-flex justify-content-between align-items-start"
+    >
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">{{ item.title }}</div>
+        Item price X qty : {{item.price}} x {{item.qty}} Total price is {{ item.total_price }}/-
+      </div>
+
+          <form action="/removeCartProduct" method="POST">
+            <input type="hidden" value="{{ item.id }}" name="product_id"/>
+            <button type="submit" class="btn btn-danger">Remove</button>
+          </form>
+
+          <span class="badge bg-primary rounded-pill mx-3">({{ item.qty }})</span>
+        </li>
+      {% endfor %}
+
+      <li
+      class="list-group-item d-flex justify-content-between align-items-start"
+    >
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Total order value</div>
+        Total amount is {{ total_amount }}
+        </div>
+      </li>
+    </ol>
+    {% if cartLength %}
+      <form action='/order' method='post' class='my-5'>
+        <button type='submit' class='btn btn-info'>place order</button>
+      </form>
+
+    {% endif %}
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.njk" %}
+{% block title %} Welcome to order details page {%endblock %}
+
+{% block content %}
+
+    <div class="container my-5">
+        <ul class="list-group">
+            {% for item in items %}
+
+                <li class="list-group-item">item: {{item.product.title}}   total price: {{item.product.price}}x {{item.qty}}  Total price is: {{item.product.price*item.qty}}</li>
+            {% endfor %}
+            <li class="list-group-item">your order has been created with order id: {{order_id}}</li>
+        </ul>
+    </div>
+
+{% endblock %}
