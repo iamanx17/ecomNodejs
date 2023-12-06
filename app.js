@@ -9,7 +9,7 @@ const error = require("./controllers/error");
 const connectDB = require("./utils/mongodb");
 
 const app = express();
-const mongodbUrl = "mongodb://localhost:27017/ecommerceShop";
+const mongodbUrl = "mongodb+srv://iamanx17:XB59iFDHGqZzPVx8@ecomnodejs.posmpgm.mongodb.net/shop";
 const port = process.env.PORT || 3000;
 
 app.set("view engine", "njk");
