@@ -1,0 +1,16 @@
+{% extends "base.njk" %}
+{% block title %} Order section {% endblock %}
+{% block addOrder_link %} active {% endblock %}
+
+{% block content %}
+
+    <div class="container my-5">
+        <ul class="list-group list-group-flush">
+            {% for order in orders %}
+
+                <li class="list-group-item">orderId: {{order._id}}     total amount: {{order.orderTotal}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

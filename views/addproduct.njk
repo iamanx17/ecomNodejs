@@ -1,0 +1,82 @@
+{% extends "base.njk" %}
+
+{% block addProduct_link %}
+  active
+{% endblock %}
+
+{% block title %}
+Add your product!!  
+{% endblock %}
+
+{% block cartlen %}
+{{cartLength}}
+  
+{% endblock %}
+
+
+{% block content %}
+  <div class="container my-5">
+    {% if not product %}
+      <form action="/add_product" method="post">
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="inputEmail3">Product title</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="inputEmail3" type="text" name="title" placeholder="Enter product title"/>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="inputEmail3">Enter Product URL</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="inputEmail3" type="text" id="basic-url" aria-describedby="basic-addon3" name="product_url" placeholder="Enter product url"/>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="inputEmail3">Product Price</label>
+          <div class="col-sm-10">
+            <input class="form-control" id="inputEmail3" type="number" name="price" placeholder="Enter product Price"/>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="inputPassword3">Enter product description.</label>
+          <div class="col-sm-10">
+            <input class="form-control"id="inputPassword3" type="text" name="description" placeholder="product description"/>
+          </div>
+          <div class="row mb-3">
+            <button class="btn btn-info" type="submit">Add product</button>
+          </div>
+        </form> 
+
+      {% else %}
+        <form action="/editproduct/{{product.id}}" method="post">
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="inputEmail3">Product title</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="inputEmail3" type="text" name="title"  value ="{{product.title}}"  placeholder="Enter product title"/>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="inputEmail3">Enter Product URL</label>
+            <div class="col-sm-10">
+              <input class="form-control" value="{{product.imageUrl}}" id="inputEmail3" type="text" id="basic-url" aria-describedby="basic-addon3" name="product_url" placeholder="Enter product url"/>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="inputEmail3">Product Price</label>
+            <div class="col-sm-10">
+              <input class="form-control" value="{{product.price}}" id="inputEmail3" type="number" name="price" placeholder="Enter product Price"/>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="inputPassword3">Enter product description.</label>
+            <div class="col-sm-10">
+              <input value ="{{product.description}}" class="form-control"  id="inputPassword3" type="text" name="description" placeholder="product description"/>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <button class="btn btn-info" type="submit">Edit product</button>
+
+          </div>
+        </form>
+      {% endif %}
+    </div>
+  {% endblock %}

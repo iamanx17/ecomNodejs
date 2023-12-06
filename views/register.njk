@@ -1,0 +1,90 @@
+{% extends "base.njk" %}
+
+{% block register_link %}
+active
+  
+{% endblock %}
+
+{% block title %}
+Get yourself registered!! 
+  
+{% endblock %}
+
+{% block content %}
+  <div class="container my-5">
+    <p class='my-5'>{{message}}</p>
+    <form action="/register" method="post">
+      <div class="row">
+        <div class="col">
+          <label class="col-sm-2 col-form-label" for="inputEmail3">First name</label>
+          <input
+          class="form-control"
+          type="text"
+          placeholder="First name"
+          aria-label="First name"
+          name="first_name"
+          placeholder = "First name"
+          required
+/>
+        </div>
+        <div class="col">
+          <label class="col-sm-2 col-form-label" for="inputEmail3">Last name</label>
+          <input
+          class="form-control"
+          type="text"
+          placeholder="Last name"
+          aria-label="Last name"
+          name="last_name"
+          placeholder = "Last name"
+          required
+/>
+        </div>
+      </div>
+      <div class="row my-3">
+        <label class="col-sm-2 col-form-label" for="inputEmail3">Email</label>
+        <div class="col-sm-10">
+          <input
+          class="form-control"
+          id="inputEmail3"
+          type="email"
+          name="email"
+          placeholder = "Email"
+          required
+/>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="inputPassword3"
+        >Enter your password</label
+      >
+        <div class="col-sm-10">
+          <input
+          class="form-control"
+          id="inputPassword3"
+          type="password"
+          name="password1"
+          placeholder = 'Enter your password'
+          required
+/>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="inputPassword3"
+        >Confirm your password</label
+      >
+        <div class="col-sm-10">
+          <input
+          class="form-control"
+          id="inputPassword3"
+          type="password"
+          name="password2"
+          placeholder ="confirm your password"
+          required
+/>
+        </div>
+      </div>
+      <button class="btn btn-danger" type="submit">register</button>
+    </form>
+  </div>
+
+{% endblock %}
